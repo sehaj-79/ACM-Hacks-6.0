@@ -11,6 +11,10 @@ import RealityKit
 import FocusEntity
 
 var ARModelStatus:Int = 1
+var modelEntity = ModelEntity()
+let anchor = AnchorEntity()
+var FirstState:Bool = true
+var savedModelEntity = ModelEntity()
 
 struct AR: View {
     var body: some View {
@@ -43,6 +47,18 @@ struct AR: View {
                     }.padding()
                     Spacer()
                 }
+                HStack{
+                    Button {
+                        ARModelStatus = 3
+                    } label: {
+                        Text("3")
+                            .frame(width: 50, height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(40)
+                    }.padding()
+                    Spacer()
+                }
             }
         }
     }
@@ -57,25 +73,25 @@ struct ARViewContainer: UIViewRepresentable {
         
         //Screen Timeout Off
         UIApplication.shared.isIdleTimerDisabled = true
-
+        
         // Start AR session
         let session = view.session
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         session.run(config)
-
-        // Add coaching overlay
-        let coachingOverlay = ARCoachingOverlayView()
-        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        coachingOverlay.session = session
-        coachingOverlay.goal = .horizontalPlane
-        view.addSubview(coachingOverlay)
-
-
+        
+//        // Add coaching overlay
+//        let coachingOverlay = ARCoachingOverlayView()
+//        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        coachingOverlay.session = session
+//        coachingOverlay.goal = .horizontalPlane
+//        view.addSubview(coachingOverlay)
+        
+        
         context.coordinator.view = view
         session.delegate = context.coordinator
-
-
+        
+        
         view.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: context.coordinator,
@@ -98,7 +114,7 @@ struct ARViewContainer: UIViewRepresentable {
     class Coordinator: NSObject, ARSessionDelegate {
         weak var view: ARView?
         var focusEntity: FocusEntity?
-
+        
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             guard let view = self.view else { return }
             debugPrint("Anchors added to the scene: ", anchors)
@@ -109,25 +125,47 @@ struct ARViewContainer: UIViewRepresentable {
             guard let view = self.view, let focusEntity = self.focusEntity else { return }
             
             
-            // Create a new anchor to add content to
-            let anchor = AnchorEntity()
-            view.scene.anchors.append(anchor)
-
-            
-            var modelEntity = ModelEntity()
-            
-            if ARModelStatus == 1 {
-                modelEntity = try! ModelEntity.loadModel(named: "body")
+            if FirstState == true {
+                view.scene.anchors.append(anchor)
+                
+                if ARModelStatus == 1 {
+                    modelEntity = try! ModelEntity.loadModel(named: "body")
+                    modelEntity.position = focusEntity.position
+                }
+                else if ARModelStatus == 2{
+                    modelEntity = try! ModelEntity.loadModel(named: "skeletal")
+                    modelEntity.position = focusEntity.position
+                }
+                
+                savedModelEntity.position = focusEntity.position
+                FirstState = false
             }
-            else if ARModelStatus == 2{
-                modelEntity = try! ModelEntity.loadModel(named: "skeletal")
+            
+            else {
+                anchor.removeChild(modelEntity)
+                view.scene.anchors.append(anchor)
+                
+                if ARModelStatus == 1 {
+                    modelEntity = try! ModelEntity.loadModel(named: "body")
+                    modelEntity.position = savedModelEntity.position
+                }
+                else if ARModelStatus == 2{
+                    modelEntity = try! ModelEntity.loadModel(named: "skeletal")
+                    modelEntity.position = savedModelEntity.position
+                }
+                
             }
+            
+            
             modelEntity.scale = [0.005, 0.005, 0.005]
-            modelEntity.position = focusEntity.position
             var var_simd_quatf = simd_quatf()
             var_simd_quatf = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))
             modelEntity.orientation = var_simd_quatf
             anchor.addChild(modelEntity)
+            
+            
+            
+            
             
             
         }

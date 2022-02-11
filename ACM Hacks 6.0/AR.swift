@@ -15,6 +15,33 @@ struct AR: View {
         ZStack {
             ARViewContainer()
                 .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                HStack{
+                    Button {
+                        
+                    } label: {
+                        Text("1")
+                            .frame(width: 50, height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(40)
+                    }.padding()
+                    Spacer()
+                }
+                HStack{
+                    Button {
+                        
+                    } label: {
+                        Text("2")
+                            .frame(width: 50, height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(40)
+                    }.padding()
+                    Spacer()
+                }
+            }
         }
     }
 }
@@ -58,7 +85,9 @@ struct ARViewContainer: UIViewRepresentable {
         
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {}
+    func updateUIView(_ uiView: ARView, context: Context) {
+        
+    }
     
     func makeCoordinator() -> Coordinator {
         Coordinator()

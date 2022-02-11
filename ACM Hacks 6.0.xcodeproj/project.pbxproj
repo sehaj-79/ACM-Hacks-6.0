@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AE699A1727B6441000F90134 /* AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE699A1627B6441000F90134 /* AR.swift */; };
 		AE699A1A27B6454D00F90134 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = AE699A1927B6454D00F90134 /* FocusEntity */; };
+		AE699A1E27B6466F00F90134 /* skeletal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A1C27B6466E00F90134 /* skeletal.usdz */; };
+		AE699A1F27B6466F00F90134 /* body.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A1D27B6466F00F90134 /* body.usdz */; };
 		E6531A8C27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */; };
 		E6531A8E27B63A89002EF3B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8D27B63A89002EF3B7 /* ContentView.swift */; };
 		E6531A9027B63A8B002EF3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6531A8F27B63A8B002EF3B7 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		AE699A1627B6441000F90134 /* AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR.swift; sourceTree = "<group>"; };
+		AE699A1C27B6466E00F90134 /* skeletal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = skeletal.usdz; sourceTree = "<group>"; };
+		AE699A1D27B6466F00F90134 /* body.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = body.usdz; sourceTree = "<group>"; };
 		E6531A8827B63A89002EF3B7 /* ACM Hacks 6.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACM Hacks 6.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACM_Hacks_6_0App.swift; sourceTree = "<group>"; };
 		E6531A8D27B63A89002EF3B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +40,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE699A1B27B6465B00F90134 /* USDZFiles */ = {
+			isa = PBXGroup;
+			children = (
+				AE699A1D27B6466F00F90134 /* body.usdz */,
+				AE699A1C27B6466E00F90134 /* skeletal.usdz */,
+			);
+			path = USDZFiles;
+			sourceTree = "<group>";
+		};
 		E6531A7F27B63A89002EF3B7 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +68,7 @@
 		E6531A8A27B63A89002EF3B7 /* ACM Hacks 6.0 */ = {
 			isa = PBXGroup;
 			children = (
+				AE699A1B27B6465B00F90134 /* USDZFiles */,
 				E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */,
 				E6531A8D27B63A89002EF3B7 /* ContentView.swift */,
 				AE699A1627B6441000F90134 /* AR.swift */,
@@ -138,6 +152,8 @@
 			files = (
 				E6531A9327B63A8B002EF3B7 /* Preview Assets.xcassets in Resources */,
 				E6531A9027B63A8B002EF3B7 /* Assets.xcassets in Resources */,
+				AE699A1E27B6466F00F90134 /* skeletal.usdz in Resources */,
+				AE699A1F27B6466F00F90134 /* body.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

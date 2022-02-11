@@ -9,12 +9,17 @@ import SwiftUI
 
 struct AR: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            ARViewContainer()
+                .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 
-struct AR_Previews: PreviewProvider {
+#if DEBUG
+struct AR_Previews : PreviewProvider {
     static var previews: some View {
         AR()
     }
 }
+#endif

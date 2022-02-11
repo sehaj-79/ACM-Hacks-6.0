@@ -136,6 +136,10 @@ struct ARViewContainer: UIViewRepresentable {
                     modelEntity = try! ModelEntity.loadModel(named: "skeletal")
                     modelEntity.position = focusEntity.position
                 }
+                else if ARModelStatus == 3{
+                    modelEntity = try! ModelEntity.loadModel(named: "muscular")
+                    modelEntity.position = focusEntity.position
+                }
                 
                 savedModelEntity.position = focusEntity.position
                 FirstState = false
@@ -151,6 +155,10 @@ struct ARViewContainer: UIViewRepresentable {
                 }
                 else if ARModelStatus == 2{
                     modelEntity = try! ModelEntity.loadModel(named: "skeletal")
+                    modelEntity.position = savedModelEntity.position
+                }
+                else if ARModelStatus == 3{
+                    modelEntity = try! ModelEntity.loadModel(named: "muscular")
                     modelEntity.position = savedModelEntity.position
                 }
                 

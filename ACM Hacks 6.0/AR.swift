@@ -10,6 +10,8 @@ import ARKit
 import RealityKit
 import FocusEntity
 
+var ARModelStatus:Int = 1
+
 struct AR: View {
     var body: some View {
         ZStack {
@@ -19,7 +21,7 @@ struct AR: View {
             VStack {
                 HStack{
                     Button {
-                        
+                        ARModelStatus = 1
                     } label: {
                         Text("1")
                             .frame(width: 50, height: 50)
@@ -31,7 +33,7 @@ struct AR: View {
                 }
                 HStack{
                     Button {
-                        
+                        ARModelStatus = 2
                     } label: {
                         Text("2")
                             .frame(width: 50, height: 50)
@@ -111,8 +113,16 @@ struct ARViewContainer: UIViewRepresentable {
             let anchor = AnchorEntity()
             view.scene.anchors.append(anchor)
 
-            let modelEntity = try! ModelEntity.loadModel(named: "body")
-            modelEntity.scale = [0.01, 0.01, 0.01]
+            
+            var modelEntity = ModelEntity()
+            
+            if ARModelStatus == 1 {
+                modelEntity = try! ModelEntity.loadModel(named: "body")
+            }
+            else if ARModelStatus == 2{
+                modelEntity = try! ModelEntity.loadModel(named: "skeletal")
+            }
+            modelEntity.scale = [0.005, 0.005, 0.005]
             modelEntity.position = focusEntity.position
             var var_simd_quatf = simd_quatf()
             var_simd_quatf = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))

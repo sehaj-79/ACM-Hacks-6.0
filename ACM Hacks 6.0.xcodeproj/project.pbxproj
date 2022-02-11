@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE699A1727B6441000F90134 /* AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE699A1627B6441000F90134 /* AR.swift */; };
 		E6531A8C27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */; };
 		E6531A8E27B63A89002EF3B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8D27B63A89002EF3B7 /* ContentView.swift */; };
 		E6531A9027B63A8B002EF3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6531A8F27B63A8B002EF3B7 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE699A1627B6441000F90134 /* AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR.swift; sourceTree = "<group>"; };
 		E6531A8827B63A89002EF3B7 /* ACM Hacks 6.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACM Hacks 6.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACM_Hacks_6_0App.swift; sourceTree = "<group>"; };
 		E6531A8D27B63A89002EF3B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */,
 				E6531A8D27B63A89002EF3B7 /* ContentView.swift */,
+				AE699A1627B6441000F90134 /* AR.swift */,
 				E6531A8F27B63A8B002EF3B7 /* Assets.xcassets */,
 				E6531A9127B63A8B002EF3B7 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				E6531A8E27B63A89002EF3B7 /* ContentView.swift in Sources */,
 				E6531A8C27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift in Sources */,
+				AE699A1727B6441000F90134 /* AR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

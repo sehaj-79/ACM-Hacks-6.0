@@ -19,7 +19,7 @@ var savedModelEntity = ModelEntity()
 var Questions : [String] = ["This muscle is not a medical\nrotator of the shoulder joint?","This muscle is flexor, adductor and\nmedial rotator of shoulder joint?","This bone is the first one to\nstart ossification?"]
 var Options = [["Pectoralis Major","Teres Major", "Teres Minor", "Latissimus dorsi"],["Pectorallis Minor","Pectoralis Major", "Teres Minor", "Infraspinatus"], ["Ulna", "Scapula", "Humerus", "Clavicle"]]
 var Answers = [2,1,3]
-var QNo : Int = 1
+var QNo : Int = 0
 
 
 struct AR: View {
@@ -238,13 +238,6 @@ struct ARViewContainer: UIViewRepresentable {
                 anchor.addChild(button3)
 
 
-                let pecEntity = try! ModelEntity.loadModel(named: "pec")
-                pecEntity.position = focusEntity.position
-                modelEntity.scale = [0.005, 0.005, 0.005]
-                var pecOrientation = simd_quatf()
-                pecOrientation = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))
-                pecEntity.orientation = pecOrientation
-                anchor.addChild(pecEntity)
 
                 let question = RUIText(with: Questions[QNo])
                 question.position = focusEntity.position + [1,0.7,-1]

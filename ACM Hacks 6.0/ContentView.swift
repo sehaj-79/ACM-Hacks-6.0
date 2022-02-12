@@ -52,6 +52,9 @@ struct ContentView: View {
                     }
                 }.padding(10)
                     .padding(.top,25)
+                    .onTapGesture {
+                        //NAVIGATE
+                    }
                 
                 ZStack{
                     Image("rectanglebg")

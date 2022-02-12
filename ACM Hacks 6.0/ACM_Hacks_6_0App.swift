@@ -11,7 +11,7 @@ import SwiftUI
 struct ACM_Hacks_6_0App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AR()
         }
     }
 }

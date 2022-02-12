@@ -29,13 +29,12 @@ struct ContentView: View {
                     }
                 }
                 
-                ZStack() {
+                ZStack{
                     Image("rectanglebg")
                         .opacity(0.75)
                         .frame(width: 300)
                         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                       
-                    HStack {
+                    HStack{
                         Spacer()
                         Text("All Topics")
                             .font(.headline)
@@ -51,16 +50,15 @@ struct ContentView: View {
                             .padding()
                         Spacer()
                     }
-                }.padding(.top,40)
-                padding(.bottom,10)
+                }.padding(10)
+                    .padding(.top,25)
                 
-                ZStack() {
+                ZStack{
                     Image("rectanglebg")
                         .opacity(0.75)
                         .frame(width: 300)
                         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                       
-                    HStack {
+                    HStack{
                         Spacer()
                         Text("Upper Limbs")
                             .font(.headline)
@@ -78,15 +76,37 @@ struct ContentView: View {
                     }
                 }.padding(10)
                 
-                ZStack() {
+                ZStack{
                     Image("rectanglebg")
                         .opacity(0.75)
                         .frame(width: 300)
                         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                       
-                    HStack {
+                    HStack{
                         Spacer()
-                        Text("Lower Limbs")
+                        Text("Thorax")
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color.white)
+                            .padding()
+                        Spacer()
+                        Spacer()
+                        Text(">")
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color.white)
+                            .padding()
+                        Spacer()
+                    }
+                }.padding(10)
+                
+                ZStack{
+                    Image("rectanglebg")
+                        .opacity(0.75)
+                        .frame(width: 300)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    HStack{
+                        Spacer()
+                        Text("Abdomen")
                             .font(.headline)
                             .fontWeight(.medium)
                             .foregroundColor(Color.white)
@@ -103,6 +123,81 @@ struct ContentView: View {
                 }.padding(10)
                 
                 
+                
+//                ZStack() {
+//                    Image("rectanglebg")
+//                        .opacity(0.75)
+//                        .frame(width: 300)
+//                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+//
+//                    HStack {
+//                        Spacer()
+//                        Text("All Topics")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                        Spacer()
+//                        Text(">")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                    }
+//                }.padding(.top,40)
+//                padding(.bottom,10)
+
+//                ZStack() {
+//                    Image("rectanglebg")
+//                        .opacity(0.75)
+//                        .frame(width: 300)
+//                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+//
+//                    HStack {
+//                        Spacer()
+//                        Text("Upper Limbs")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                        Spacer()
+//                        Text(">")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                    }
+//                }.padding(10)
+//
+//                ZStack() {
+//                    Image("rectanglebg")
+//                        .opacity(0.75)
+//                        .frame(width: 300)
+//                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+//
+//                    HStack {
+//                        Spacer()
+//                        Text("Lower Limbs")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                        Spacer()
+//                        Text(">")
+//                            .font(.headline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.white)
+//                            .padding()
+//                        Spacer()
+//                    }
+//                }.padding(10)
+
+
                 Spacer()
             }.offset(y: 50)
         }

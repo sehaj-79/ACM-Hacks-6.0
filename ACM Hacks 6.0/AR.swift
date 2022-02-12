@@ -16,9 +16,10 @@ var modelEntity = ModelEntity()
 let anchor = AnchorEntity()
 var FirstState:Bool = true
 var savedModelEntity = ModelEntity()
-var Questions : [String] = ["This muscle is not a medical rotator of the shoulder joint?","This muscle is flexor, adductor and medial rotator of shoulder joint?","This bone is the first one to start ossification?"]
-var Options = [["Pectoralis Major","Teres Major", "Teres Minor", "Latissimus dorsi"],["Pectorallis Minor","Pectoralis Major", "Teres Minor", "Infraspinatus"], ["Ulna", "Scapula", "Clavicle", "Humerus"]]
-//var Answers =
+var Questions : [String] = ["This muscle is not a medical\nrotator of the shoulder joint?","This muscle is flexor, adductor and\nmedial rotator of shoulder joint?","This bone is the first one to\nstart ossification?"]
+var Options = [["Pectoralis Major","Teres Major", "Teres Minor", "Latissimus dorsi"],["Pectorallis Minor","Pectoralis Major", "Teres Minor", "Infraspinatus"], ["Ulna", "Scapula", "Humerus", "Clavicle"]]
+var Answers = [2,1,3]
+var QNo : Int = 1
 
 
 struct AR: View {
@@ -172,11 +173,70 @@ struct ARViewContainer: UIViewRepresentable {
                 
                 let boardEntity = try! ModelEntity.loadModel(named: "board")
                 boardEntity.position = focusEntity.position + [1,0,-1.05]
-                boardEntity.scale = [0.001,0.001,0.001]
+                boardEntity.scale = [0.0012,0.0012,0.0012]
                 var boardOrientation = simd_quatf()
-                boardOrientation = simd_quatf(angle: -0.4 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                boardOrientation = simd_quatf(angle: 3.14 ,axis: simd_float3(x: 0,y: 1, z: 0))
                 boardEntity.orientation = boardOrientation
                 anchor.addChild(boardEntity)
+                
+                let button0 = RUIButton(updateCallback: { myButton in
+                    if Answers[QNo] == 0 {
+                        myButton.buttonColor = .systemGreen
+                    }
+                    else{
+                        myButton.buttonColor = .systemRed
+                    }
+                    
+                })
+                let button1 = RUIButton(updateCallback: { myButton in
+                    if Answers[QNo] == 1 {
+                        myButton.buttonColor = .systemGreen
+                    }
+                    else{
+                        myButton.buttonColor = .systemRed
+                    }
+                    
+                })
+                let button2 = RUIButton(updateCallback: { myButton in
+                    if Answers[QNo] == 2 {
+                        myButton.buttonColor = .systemGreen
+                    }
+                    else{
+                        myButton.buttonColor = .systemRed
+                    }
+                    
+                })
+                let button3 = RUIButton(updateCallback: { myButton in
+                    if Answers[QNo] == 3 {
+                        myButton.buttonColor = .systemGreen
+                    }
+                    else{
+                        myButton.buttonColor = .systemRed
+                    }
+                    
+                })
+                
+                button0.scale = [0.1, 0.1, 0.1]
+                button1.scale = [0.1, 0.1, 0.1]
+                button2.scale = [0.1, 0.1, 0.1]
+                button3.scale = [0.1, 0.1, 0.1]
+                
+                button0.position = focusEntity.position + [0.5,2,-1]
+                button1.position = focusEntity.position + [1.5,2,-1]
+                button2.position = focusEntity.position + [0.5,1,-1]
+                button3.position = focusEntity.position + [1.5,1,-1]
+                
+                var bOrientation = simd_quatf()
+                bOrientation = simd_quatf(angle: 3.14 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                button0.orientation = bOrientation
+                button1.orientation = bOrientation
+                button2.orientation = bOrientation
+                button3.orientation = bOrientation
+                anchor.addChild(button0)
+                anchor.addChild(button1)
+                anchor.addChild(button2)
+                anchor.addChild(button3)
+                
                 
                 let pecEntity = try! ModelEntity.loadModel(named: "pec")
                 pecEntity.position = focusEntity.position
@@ -186,13 +246,23 @@ struct ARViewContainer: UIViewRepresentable {
                 pecEntity.orientation = pecOrientation
                 anchor.addChild(pecEntity)
                 
-                let question = RUIText(with: "This is your Question")
-                question.position = focusEntity.position + [1,0.5,-1]
-                question.scale = [0.2,0.2,0.2]
+                let question = RUIText(with: Questions[QNo])
+                question.position = focusEntity.position + [1,0.7,-1]
+                question.scale = [0.175,0.175,0.175]
                 var questionOrientation = simd_quatf()
-                questionOrientation = simd_quatf(angle: 2.74 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                questionOrientation = simd_quatf(angle: 3.14 ,axis: simd_float3(x: 0,y: 1, z: 0))
                 question.orientation = questionOrientation
                 anchor.addChild(question)
+                
+                let option = RUIText(with: "\(Options[QNo][0])           \(Options[QNo][1])\n\n\(Options[QNo][2])           \(Options[QNo][3])")
+                option.position = focusEntity.position + [1,0.3,-1]
+                option.scale = [0.15,0.15,0.15]
+                var optionOrientation = simd_quatf()
+                optionOrientation = simd_quatf(angle: 3.14 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                option.orientation = optionOrientation
+                anchor.addChild(option)
+                
+                
                 
                 
                 savedModelEntity.position = focusEntity.position

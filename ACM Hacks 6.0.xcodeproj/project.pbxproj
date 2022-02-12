@@ -12,6 +12,11 @@
 		AE699A1E27B6466F00F90134 /* skeletal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A1C27B6466E00F90134 /* skeletal.usdz */; };
 		AE699A1F27B6466F00F90134 /* body.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A1D27B6466F00F90134 /* body.usdz */; };
 		AE699A2127B66E7800F90134 /* muscular.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A2027B66E7800F90134 /* muscular.usdz */; };
+		AE699A2427B6903700F90134 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE699A2327B6903700F90134 /* RealityUI */; };
+		AE699A2627B702D200F90134 /* board.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A2527B702D200F90134 /* board.usdz */; };
+		AE699A2827B70D8800F90134 /* arrow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A2727B70D8800F90134 /* arrow.usdz */; };
+		AE699A2B27B71CC000F90134 /* pec.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A2927B71CC000F90134 /* pec.usdz */; };
+		AE699A2C27B71CC000F90134 /* teres.usdz in Resources */ = {isa = PBXBuildFile; fileRef = AE699A2A27B71CC000F90134 /* teres.usdz */; };
 		E6531A8C27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */; };
 		E6531A8E27B63A89002EF3B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6531A8D27B63A89002EF3B7 /* ContentView.swift */; };
 		E6531A9027B63A8B002EF3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6531A8F27B63A8B002EF3B7 /* Assets.xcassets */; };
@@ -23,6 +28,10 @@
 		AE699A1C27B6466E00F90134 /* skeletal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = skeletal.usdz; sourceTree = "<group>"; };
 		AE699A1D27B6466F00F90134 /* body.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = body.usdz; sourceTree = "<group>"; };
 		AE699A2027B66E7800F90134 /* muscular.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = muscular.usdz; sourceTree = "<group>"; };
+		AE699A2527B702D200F90134 /* board.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = board.usdz; sourceTree = "<group>"; };
+		AE699A2727B70D8800F90134 /* arrow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = arrow.usdz; sourceTree = "<group>"; };
+		AE699A2927B71CC000F90134 /* pec.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pec.usdz; sourceTree = "<group>"; };
+		AE699A2A27B71CC000F90134 /* teres.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = teres.usdz; sourceTree = "<group>"; };
 		E6531A8827B63A89002EF3B7 /* ACM Hacks 6.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACM Hacks 6.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6531A8B27B63A89002EF3B7 /* ACM_Hacks_6_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACM_Hacks_6_0App.swift; sourceTree = "<group>"; };
 		E6531A8D27B63A89002EF3B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE699A1A27B6454D00F90134 /* FocusEntity in Frameworks */,
+				AE699A2427B6903700F90134 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +55,12 @@
 		AE699A1B27B6465B00F90134 /* USDZFiles */ = {
 			isa = PBXGroup;
 			children = (
+				AE699A2727B70D8800F90134 /* arrow.usdz */,
+				AE699A2527B702D200F90134 /* board.usdz */,
 				AE699A2027B66E7800F90134 /* muscular.usdz */,
 				AE699A1D27B6466F00F90134 /* body.usdz */,
+				AE699A2927B71CC000F90134 /* pec.usdz */,
+				AE699A2A27B71CC000F90134 /* teres.usdz */,
 				AE699A1C27B6466E00F90134 /* skeletal.usdz */,
 			);
 			path = USDZFiles;
@@ -107,6 +121,7 @@
 			name = "ACM Hacks 6.0";
 			packageProductDependencies = (
 				AE699A1927B6454D00F90134 /* FocusEntity */,
+				AE699A2327B6903700F90134 /* RealityUI */,
 			);
 			productName = "ACM Hacks 6.0";
 			productReference = E6531A8827B63A89002EF3B7 /* ACM Hacks 6.0.app */;
@@ -138,6 +153,7 @@
 			mainGroup = E6531A7F27B63A89002EF3B7;
 			packageReferences = (
 				AE699A1827B6454D00F90134 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				AE699A2227B6903700F90134 /* XCRemoteSwiftPackageReference "RealityUI" */,
 			);
 			productRefGroup = E6531A8927B63A89002EF3B7 /* Products */;
 			projectDirPath = "";
@@ -153,10 +169,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE699A2627B702D200F90134 /* board.usdz in Resources */,
 				E6531A9327B63A8B002EF3B7 /* Preview Assets.xcassets in Resources */,
+				AE699A2C27B71CC000F90134 /* teres.usdz in Resources */,
 				E6531A9027B63A8B002EF3B7 /* Assets.xcassets in Resources */,
 				AE699A2127B66E7800F90134 /* muscular.usdz in Resources */,
+				AE699A2B27B71CC000F90134 /* pec.usdz in Resources */,
 				AE699A1E27B6466F00F90134 /* skeletal.usdz in Resources */,
+				AE699A2827B70D8800F90134 /* arrow.usdz in Resources */,
 				AE699A1F27B6466F00F90134 /* body.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +407,14 @@
 				kind = branch;
 			};
 		};
+		AE699A2227B6903700F90134 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/RealityUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -394,6 +422,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE699A1827B6454D00F90134 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
+		};
+		AE699A2327B6903700F90134 /* RealityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE699A2227B6903700F90134 /* XCRemoteSwiftPackageReference "RealityUI" */;
+			productName = RealityUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

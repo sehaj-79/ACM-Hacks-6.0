@@ -9,59 +9,66 @@ import SwiftUI
 import ARKit
 import RealityKit
 import FocusEntity
+import RealityUI
 
 var ARModelStatus:Int = 1
 var modelEntity = ModelEntity()
 let anchor = AnchorEntity()
 var FirstState:Bool = true
 var savedModelEntity = ModelEntity()
+var Questions : [String] = ["This muscle is not a medical rotator of the shoulder joint?","This muscle is flexor, adductor and medial rotator of shoulder joint?","This bone is the first one to start ossification?"]
+var Options = [["Pectoralis Major","Teres Major", "Teres Minor", "Latissimus dorsi"],["Pectorallis Minor","Pectoralis Major", "Teres Minor", "Infraspinatus"], ["Ulna", "Scapula", "Clavicle", "Humerus"]]
+//var Answers =
+
 
 struct AR: View {
     var body: some View {
-        ZStack {
-            ARViewContainer()
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                HStack{
-                    Button {
-                        ARModelStatus = 1
-                    } label: {
-                        Text("1")
-                            .frame(width: 50, height: 50)
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(40)
-                    }.padding()
-                    Spacer()
-                }
-                HStack{
-                    Button {
-                        ARModelStatus = 2
-                    } label: {
-                        Text("2")
-                            .frame(width: 50, height: 50)
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(40)
-                    }.padding()
-                    Spacer()
-                }
-                HStack{
-                    Button {
-                        ARModelStatus = 3
-                    } label: {
-                        Text("3")
-                            .frame(width: 50, height: 50)
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(40)
-                    }.padding()
-                    Spacer()
+        //HStack {
+            ZStack {
+                ARViewContainer()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    HStack{
+                        Button {
+                            ARModelStatus = 1
+                        } label: {
+                            Text("1")
+                                .frame(width: 50, height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(40)
+                        }.padding()
+                        Spacer()
+                    }
+                    HStack{
+                        Button {
+                            ARModelStatus = 2
+                        } label: {
+                            Text("2")
+                                .frame(width: 50, height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(40)
+                        }.padding()
+                        Spacer()
+                    }
+                    HStack{
+                        Button {
+                            ARModelStatus = 3
+                        } label: {
+                            Text("3")
+                                .frame(width: 50, height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(40)
+                        }.padding()
+                        Spacer()
+                    }
                 }
             }
         }
-    }
+   // }
 }
 
 struct ARViewContainer: UIViewRepresentable {
@@ -70,6 +77,10 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
         
         let view = ARView()
+        
+        //RealityUI Config
+        RealityUI.registerComponents()
+        RealityUI.enableGestures(.all, on: view)
         
         //Screen Timeout Off
         UIApplication.shared.isIdleTimerDisabled = true
@@ -80,12 +91,12 @@ struct ARViewContainer: UIViewRepresentable {
         config.planeDetection = [.horizontal]
         session.run(config)
         
-//        // Add coaching overlay
-//        let coachingOverlay = ARCoachingOverlayView()
-//        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        coachingOverlay.session = session
-//        coachingOverlay.goal = .horizontalPlane
-//        view.addSubview(coachingOverlay)
+        // Add coaching overlay
+        let coachingOverlay = ARCoachingOverlayView()
+        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        coachingOverlay.session = session
+        coachingOverlay.goal = .horizontalPlane
+        view.addSubview(coachingOverlay)
         
         
         context.coordinator.view = view
@@ -141,6 +152,49 @@ struct ARViewContainer: UIViewRepresentable {
                     modelEntity.position = focusEntity.position
                 }
                 
+//                let newSwitch = RUISwitch(
+//                    RUI: RUIComponent(respondsToLighting: true),
+//                    changedCallback: { mySwitch in
+//                        modelEntity.model?.materials = [
+//                            SimpleMaterial(
+//                                color: mySwitch.isOn ? .green : .red,
+//                                isMetallic: false
+//                            )]})
+//
+//
+//                newSwitch.scale = [0.1, 0.1, 0.1]
+//                //newSwitch.position = focusEntity.position
+//                var newSwitchOrientation = simd_quatf()
+//                newSwitchOrientation = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))
+//                newSwitch.orientation = newSwitchOrientation
+//                anchor.addChild(newSwitch)
+                
+                
+                let boardEntity = try! ModelEntity.loadModel(named: "board")
+                boardEntity.position = focusEntity.position + [1,0,-1.05]
+                boardEntity.scale = [0.001,0.001,0.001]
+                var boardOrientation = simd_quatf()
+                boardOrientation = simd_quatf(angle: -0.4 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                boardEntity.orientation = boardOrientation
+                anchor.addChild(boardEntity)
+                
+                let pecEntity = try! ModelEntity.loadModel(named: "pec")
+                pecEntity.position = focusEntity.position
+                modelEntity.scale = [0.005, 0.005, 0.005]
+                var pecOrientation = simd_quatf()
+                pecOrientation = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                pecEntity.orientation = pecOrientation
+                anchor.addChild(pecEntity)
+                
+                let question = RUIText(with: "This is your Question")
+                question.position = focusEntity.position + [1,0.5,-1]
+                question.scale = [0.2,0.2,0.2]
+                var questionOrientation = simd_quatf()
+                questionOrientation = simd_quatf(angle: 2.74 ,axis: simd_float3(x: 0,y: 1, z: 0))
+                question.orientation = questionOrientation
+                anchor.addChild(question)
+                
+                
                 savedModelEntity.position = focusEntity.position
                 FirstState = false
             }
@@ -165,6 +219,8 @@ struct ARViewContainer: UIViewRepresentable {
             }
             
             
+          
+            
             modelEntity.scale = [0.005, 0.005, 0.005]
             var var_simd_quatf = simd_quatf()
             var_simd_quatf = simd_quatf(angle: 0 ,axis: simd_float3(x: 0,y: 1, z: 0))
@@ -172,14 +228,11 @@ struct ARViewContainer: UIViewRepresentable {
             anchor.addChild(modelEntity)
             
             
-            
-            
-            
-            
         }
     }
     
 }
+
 
 #if DEBUG
 struct AR_Previews : PreviewProvider {
